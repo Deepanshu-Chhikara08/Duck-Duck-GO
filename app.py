@@ -32,4 +32,4 @@ if text:
     response = pipe(f"Answer the question: {text}", max_length=150, num_return_sequences=1)
     
     # Display the generated response
-    st.write(f"Answer: {response[0]['generated_text']}")
+    st.write(f"Answer: {response[1]['generated_text']}")
