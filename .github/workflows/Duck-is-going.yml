@@ -26,10 +26,13 @@ jobs:
         run: |
           git remote add huggingface https://Joekd608:$HF_TOKEN@huggingface.co/spaces/Joekd608/Duck-Duck_GO || true
 
-      - name: Pull latest changes from Hugging Face
+      - name: Fetch latest changes from Hugging Face
         run: |
           git fetch huggingface main
-          git rebase huggingface/main
+
+      - name: Merge with Hugging Face main branch (resolve conflicts by favoring remote)
+        run: |
+          git merge -X theirs huggingface/main || true
 
       - name: Push to Hugging Face Hub
         env:
