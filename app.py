@@ -3,7 +3,7 @@ from transformers import pipeline
 from huggingface_hub import login
 import torch
 import os
-
+####
 # Set page configuration
 st.set_page_config(page_title="Text GenAI Model", page_icon="🤖")
 st.title("Text GenAI Model")
