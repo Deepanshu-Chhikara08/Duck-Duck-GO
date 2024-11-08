@@ -20,14 +20,15 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-      - name: Pull changes from Hugging Face Hub
+      - name: Pull latest changes from Hugging Face Hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git pull https://Joekd608:$HF_TOKEN@huggingface.co/spaces/Joekd608/Duck-Duck_GO main || true
+          git remote add huggingface https://Joekd608:$HF_TOKEN@huggingface.co/spaces/Joekd608/Duck-Duck_GO || true
+          git pull huggingface main --rebase || true
 
-      - name: Push to hub
+      - name: Push to Hugging Face Hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git push https://Joekd608:$HF_TOKEN@huggingface.co/spaces/Joekd608/Duck-Duck_GO main
+          git push huggingface main
