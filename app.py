@@ -10,7 +10,7 @@ st.title("Text GenAI Model")
 st.subheader("Answer Random Questions Using Hugging Face Models")
 
 # Fetch Hugging Face token from Streamlit Secrets
-HF_TOKEN =  ${{ secrets.HF_TOKEN }}
+HF_TOKEN =  ${{secrets.HF_TOKEN }}
 access_token_read = st.secrets[HF_TOKEN]  # Ensure this is set in your Streamlit Cloud Secrets
 
 # Free up GPU memory (if using GPU)
