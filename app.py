@@ -10,17 +10,17 @@ st.title("Text GenAI Model")
 st.subheader("Answer Random Questions Using Hugging Face Models")
 
 # Fetch Hugging Face token from Streamlit Secrets
-HF_TOKEN =  secret.HF_TOKEN
-access_token_read = st.secrets[HF_TOKEN]  # Ensure this is set in your Streamlit Cloud Secrets
+# HF_TOKEN =  secret.HF_TOKEN
+# access_token_read = st.secrets[HF_TOKEN]  # Ensure this is set in your Streamlit Cloud Secrets
 
-# Free up GPU memory (if using GPU)
-torch.cuda.empty_cache()
+# # Free up GPU memory (if using GPU)
+# torch.cuda.empty_cache()
 
-# Set environment variable to avoid fragmentation
-os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+# # Set environment variable to avoid fragmentation
+# os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
-# Login to Hugging Face Hub using the access token
-login(token=access_token_read)
+# # Login to Hugging Face Hub using the access token
+# login(token=access_token_read)
 
 # Initialize the text generation pipeline with GPT-2 model
 pipe = pipeline("text-generation", model="distilbert/distilgpt2")  # Using CPU
