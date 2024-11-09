@@ -14,28 +14,7 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-          
-      - name: Set up Git config
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-
-      - name: Add Hugging Face remote
+      - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          git remote add huggingface https://Joekd608:$HF_TOKEN@huggingface.co/spaces/Joekd608/Duck-Duck_GO || true
-
-      - name: Fetch latest changes from Hugging Face
-        run: |
-          git fetch huggingface main
-
-      - name: Merge with Hugging Face main branch (resolve conflicts by favoring remote)
-        run: |
-          git merge -X theirs huggingface/main || true
-
-      - name: Push to Hugging Face Hub
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          git push huggingface main
+        run: git push --force https://Joekd608:$HF_TOKEN@huggingface.co/spaces/Joekd608/Duck-Duck_GO main
